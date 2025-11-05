@@ -1,0 +1,22 @@
+# Creating input data
+input <- mtcars[, c("mpg", "wt", "disp", "hp")]
+print(head(input))  # Display the first few rows of the data
+
+# Creating the relationship model
+Model <- lm(mpg ~ wt + disp + hp, data = input)
+
+# Showing the model summary
+print(summary(Model))
+
+# Plotting the relationship between actual and predicted values
+predicted_mpg <- predict(Model, input)
+
+# Scatter plot of Actual vs Predicted values
+plot(input$mpg, predicted_mpg,
+     main = "Actual vs Predicted MPG",
+     xlab = "Actual MPG",
+     ylab = "Predicted MPG",
+     pch = 19, col = "blue")
+
+# Adding a regression line (perfect fit reference line)
+abline(a = 0, b = 1, col = "red", lwd = 2)
