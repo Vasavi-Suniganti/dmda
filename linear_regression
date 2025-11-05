@@ -1,0 +1,17 @@
+
+# Sample data
+x <- c(141, 134, 178, 156, 108, 116, 119, 143, 162, 130)
+y <- c(62, 85, 56, 21, 47, 17, 76, 92, 62, 58)
+
+# Perform linear regression
+model <- lm(y ~ x)
+
+# Print summary of the regression
+summary(model)
+
+# Plot the data points
+plot(x, y, main = "Linear Regression of y on x",
+     xlab = "x", ylab = "y", pch = 19, col = "blue")
+
+# Add the regression line
+abline(model, col = "red", lwd = 2)
