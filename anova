@@ -1,0 +1,25 @@
+input <- mtcars[,c("am","mpg","hp")]  
+print(head(input))  
+# Get the dataset.  
+input <- mtcars  
+# Create the regression model.  
+result <- aov(mpg~hp*am,data = input)  
+print(summary(result))  
+# Create the regression model.  
+result <- aov(mpg~hp+am,data = input)  
+print(summary(result))  
+# Create the regression models.  
+result1 <- aov(mpg~hp*am,data = input)  
+result2 <- aov(mpg~hp+am,data = input)  
+# Compare the two models.  
+print(anova(result1,result2)) 
+install.packages("ggplot2", type = "binary") 
+library(ggplot2) 
+ggplot(input, aes(x = hp, y = mpg, color = factor(am))) + 
+  geom_point(size = 3) + 
+  geom_smooth(method = "lm", se = FALSE) + 
+  labs(title = "ANCOVA: mpg ~ hp + am", 
+       x = "Horsepower", 
+       y = "Miles per Gallon", 
+       color = "Transmission (0 = Auto, 1 = Manual)") 
+mtcars
